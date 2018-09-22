@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:OptPacking" 
+             x:Class="OptPacking.MainPage">
+
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title -->
+        <StackLayout Grid.Row="0" BackgroundColor="Gray" 
+                     Padding="0,0,0,1" HeightRequest="50">
+            <StackLayout BackgroundColor="White" HeightRequest="50">
+                <Label Text="OptPacking Demo" 
+                       Grid.Row="0" VerticalOptions="EndAndExpand"/>
+            </StackLayout>
+        </StackLayout>
+
+        <!-- Buttons to control this App -->
+        <StackLayout Grid.Row="1" Orientation="Horizontal">
+            <Button x:Name="OperateSystemButton"
+                    Text="Crane" Clicked="OperateSystem"
+                    WidthRequest="60" HeightRequest="25"
+                    BorderWidth="1" Margin="3,3,0,3"/>
+            <Button x:Name="ChangePackingButton"
+                    Text="BL" Clicked="ChangePacking"
+                    WidthRequest="60" HeightRequest="25"
+                    BorderWidth="1" Margin="-3,3,0,3"/>            
+            <Button x:Name="LocalSearchButton"
+                    Text="LclSrch" Clicked="LocalSearch"
+                    WidthRequest="60" HeightRequest="25"
+                    BorderWidth="1" Margin="-3,3,0,3"/>
+            <Button x:Name="SetBlockToContainerButton"
+                    Text="SetBlck" Clicked="SetBlockToContainer"
+                    WidthRequest="60" HeightRequest="25"
+                    BorderWidth="1" Margin="-3,3,0,3"/>
+            <!--
+            <Button x:Name="Init"
+                    Text="Init" Clicked="ReInitSystem"
+                    WidthRequest="60" HeightRequest="25"
+                    BorderWidth="1" Margin="-3,3,0,3"/>
+            -->
+            <Label x:Name="StatusLabel" Text="System Ready" FontSize="14"
+                   HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+        </StackLayout>
+
+        <!-- Main Area -->
+        <StackLayout Grid.Row="2" BackgroundColor="Gray" Padding="0,1,0,1" 
+                     VerticalOptions="FillAndExpand">
+            <AbsoluteLayout x:Name="Board" SizeChanged="GetBoardSize"
+                            BackgroundColor="DimGray" VerticalOptions="FillAndExpand">
+
+                <!-- Container -->
+                <StackLayout x:Name="ContainerBox"
+                             TranslationX="10" TranslationY="250" 
+                             WidthRequest="200" HeightRequest="250"
+                             BackgroundColor="White"/>
+                
+                <!-- Block Conveyor -->
+                <ContentView x:Name="Conveyor" WidthRequest="300" HeightRequest="100"
+                             TranslationX="250" TranslationY="100">
+                    <ContentView.Content>
+                        <AbsoluteLayout x:Name="ConveyorAbsLayout" WidthRequest="200" HeightRequest="150"
+                                        BackgroundColor="Transparent">
+                            <BoxView x:Name="ConveyorBoard" WidthRequest="200" HeightRequest="20"
+                                     TranslationX="0"  BackgroundColor="LightBlue" />
+                        </AbsoluteLayout>                        
+                    </ContentView.Content>
+                </ContentView>
+
+
+                <!-- Crane Belt -->
+                <StackLayout BackgroundColor="Yellow"
+                             TranslationX="105" TranslationY="48"
+                             WidthRequest="200" HeightRequest="2" />
+                <StackLayout BackgroundColor="Yellow"
+                             TranslationX="105" TranslationY="98"
+                             WidthRequest="200" HeightRequest="2" />
+                
+                <!-- Crane Gear -->
+                <Label Text="○" FontSize="70" TextColor="Yellow"
+                       TranslationX="77" TranslationY="32"/>
+                <Label Text="○" FontSize="70" TextColor="Yellow"
+                       TranslationX="277" TranslationY="32"/>
+                
+                <!-- Indicator -->
+                <StackLayout TranslationX="215" TranslationY="300" 
+                             WidthRequest="155" HeightRequest="200"
+                             BackgroundColor="Teal">
+                    <Label Text="Created Blocks:"
+                           FontSize="14" TextColor="White"/>
+                    <Label x:Name="Label4" 
+                           FontSize="14" TextColor="White"/>
+                    <Label x:Name="Label5" Margin="0,-5,0,0"
+                           FontSize="14" TextColor="White"/>
+                    <Label Text="  CTR area: 50,000" Margin="0,-5,0,0"
+                           FontSize="14" TextColor="White"/>
+                    <Label Text="                         [pixel^2]" Margin="0,-10,0,0"
+                           FontSize="12" TextColor="White"/>
+                    <Label Text="Packed Blocks:" Margin="0,20,0,0"
+                           FontSize="14" TextColor="White"/>
+                    <Label x:Name="Label6"
+                           FontSize="14" TextColor="White"/>
+                    <Label x:Name="Label7" Margin="0,-5,0,0"
+                           FontSize="14" TextColor="White"/>
+                    <Label x:Name="Label8" Margin="0,-5,0,0"
+                           FontSize="14" TextColor="White"/>
+                </StackLayout>
+                                
+            </AbsoluteLayout>
+        </StackLayout>
+
+
+        <!-- Monitor some variables for Debug -->
+        <StackLayout x:Name="Debug" Grid.Row="3" Orientation="Horizontal">
+            <StackLayout>
+                <Label x:Name="Label1" FontSize="14" Text=" "/>
+                <Label x:Name="Label2" FontSize="14" Text=" "/>
+                <Label x:Name="Label3" FontSize="14" Text=" "/>
+            </StackLayout>
+        </StackLayout>
+        
+    </Grid>
+    
+</ContentPage>
