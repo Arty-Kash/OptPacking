@@ -8,4 +8,4 @@ English:
 
 Japanese: 
 
-[Keywords] Xamarin.Forms, 
+[Keywords] Xamarin.Forms, Animation, async/await, Task, TranslateTo, RotateTo, Anchor, 2D Rectangle Packing, Optimization, Near-Fit Decreasing Height, Fast-Fit Decreasing Height, Best-Fit Decreasing Height, NFDH, FFDH, BFDH, Bottom-Left method, Simulated Annealing
